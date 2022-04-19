@@ -45,7 +45,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.CardTasarimTut
 
         //This is for get image id as a string and adapt it
         t.imageViewFilmResim.setImageResource(
-                mContext.getResources().getIdentifier(film.getFilmResimAdi(),"drawabşe",mContext.getPackageName()));
+                mContext.getResources().getIdentifier(film.getFilmResimAdi(),"drawable",mContext.getPackageName()));
         t.textViewFilmAdi.setText(film.getFilmAdi());
         t.textViewFilmFiyat.setText(film.getFilmFiyat()+" ₺");
         t.buttonSepeteEkle.setOnClickListener(view -> {
