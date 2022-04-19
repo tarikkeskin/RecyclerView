@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.detaylrecyclerview.databinding.CardTasarimBinding;
@@ -50,6 +51,28 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.CardTasarimTut
         t.textViewFilmFiyat.setText(film.getFilmFiyat()+" ₺");
         t.buttonSepeteEkle.setOnClickListener(view -> {
             Snackbar.make(view,film.getFilmAdi()+" sepete eklendi!",Snackbar.LENGTH_SHORT).show();
+        });
+        /**
+         * Pop-up Menu
+         */
+        t.imageViewDahaFazla.setOnClickListener(view -> {
+            PopupMenu popup = new PopupMenu(mContext,view);
+            popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+            popup.show();
+            popup.setOnMenuItemClickListener(menuItem -> {
+                switch (menuItem.getItemId()){
+                    case R.id.action_haber_ver:
+                        Snackbar.make(view,film.getFilmAdi()+" haberdar edilcek..",Snackbar.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.action_favorilere_ekle:
+                        Snackbar.make(view,film.getFilmAdi()+" Favorilere eklendi!",Snackbar.LENGTH_SHORT).show();
+                        return true;
+                    default:
+                        return false;
+                }
+            });
+
+
         });
 
 
